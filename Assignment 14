@@ -24,6 +24,50 @@ public class Dropdown_Single2 {
 		WebElement selection = options.getFirstSelectedOption();
 		
 		System.out.println(selection.getText());
+
+Switch to the Alert and print the text inside that Alert (https://demo.automationtesting.in/Alerts.html).
+
+package selepractice;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class Alert_assignment {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		
+		String url = "https://demo.automationtesting.in/Alerts.html";
+		String id = "OKTab";
+		
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get(url);
+		
+		Thread.sleep(2000);
+		WebElement button = driver.findElement(By.id(id));
+		
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0,300)");
+		button.click();
+		
+		Alert alertPopup = driver.switchTo().alert();
+		
+		String msg = alertPopup.getText();
+		
+		System.out.println(msg);
+		
+		alertPopup.accept(); //To click ok button in Alert
+		
+
+	}
+
+}
+
 		
 
 	}
